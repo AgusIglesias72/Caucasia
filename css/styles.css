@@ -1,0 +1,27 @@
+body {
+  margin: 0;
+  padding: 0; }
+
+.mynav {
+  margin: 10px 300px; }
+
+.titulo {
+  text-align: center; }
+
+#contenedor-productos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; }
+
+.producto {
+  margin: 10px;
+  box-shadow: 2px 6px 3px 3px rgba(0, 0, 0, 0.3); }
+  .producto h3 {
+    padding: 10px;
+    border: solid 1px grey;
+    border-radius: 5px;
+    text-align: center; }
+  .producto p {
+    text-align: right;
+    color: blue;
+    font-size: 30px; }
