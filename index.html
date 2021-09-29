@@ -8,36 +8,61 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <!-- Styles Css -->
     <link rel="stylesheet" href="css/styles.css">
-    <!--JQuery-->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
+    
     <title>Document</title>
 </head>
 <body>
     <!-- Header de Bootstrap-->
-    <ul class="nav nav-tabs mynav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Active</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-        </li>
-    </ul>
+<header class="container">
+  <ul class="nav nav-tabs mynav">
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="#">Active</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+    </li>
+  </ul>
+</header>
 
-    <h1 id="title">Caucasia</h1>
-    <hr>
-    
 
+<h1 id="title" class="container">Caucasia</h1>
+<hr>
+<!--CAROUSEL-->
+<div id="carouselExampleIndicators" class="carousel carouselcss slide container" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner carouselimg">
+    <div class="carousel-item active">
+      <img src="./img/ImagenGris.png" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item carouselimg">
+      <img src="./img/ImagenGris.png" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item carouselimg">
+      <img src="./img/ImagenGris.png" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
     <!-- FILTROS -->
-    
-  
-  <div class="container">
+<main class="container">
+  <div class="col-9">
     <h2 id="filtrado">Filtrado</h2>
     <select id="tipo">
       <option value="Todos">Todos</option>
@@ -46,31 +71,86 @@
       <option value="Velas">Velas</option>
       <option value="Spa">Spa</option>
       <option value="Otros">Otros</option>
-  </select>
+    </select>
 
-  <select id="precios">
-    <option value="0">Todos</option>
-    <option value="1">0 - 1000</option>
-    <option value="2">+1000</option>
-  </select> 
+    <select id="precios">
+      <option value="0">Todos</option>
+      <option value="1">0 - 1000</option>
+      <option value="2">+1000</option>
+    </select> 
   </div>
-  
-    <main id="contenedor-productos" class="container">
-      <!-- Mediante Js Agrego los Divs-->
-    </main>
+  <div id="boton-carrito" class="col-3">
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      Launch demo modal
+    </button>
+  </div>
 
-    <table class="table container">
-      <thead>
-        <tr>
-          <th scope="col">Tipo</th>
-          <th scope="col">Nombre</th>
-          <th scope="col">Precio</th>
-        </tr>
-      </thead>
-      <tbody id="tabla-contenedor">
-        
-      </tbody>
-    </table>
+  <section id="contenedor-productos" class="col-12">
+    <!-- Mediante Js Agrego los Divs-->
+  </section>
+</main>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="modal-body">
+        <!-- Acá va todo lo que genero en Js -->
+      </div>
+      <div class="modal-total" id="modal-total">
+        <div id="total-compra" class="total-compra">
+          <h5>
+            Tus productos: <span id="cant-productos"></span>
+          </h5>
+          <h5>
+            Total: <span id="cant-total"></span>
+          </h5>
+          <button id="vaciar-carrito" class="btn btn-primary">Vaciar Carrito</button>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary">Comprar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<template id="template-carrito">
+  <div id="carrito-body" class="row carrito-prod">
+    <img id="img-carrito" class="col-3" src="" alt="">
+    <div id="texto-carrito" class="col-6">
+      <h4 id="titulo-carrito"></h4>
+      <span id="info-carrito"></span>
+    </div>
+    <div class="btn-group col-3">
+      <div id="cantidad-carrito" role="group" aria-label="Basic outlined example">
+        <button data-id="" id="boton-menos" type="button" class="btn btnminus btn-outline-primary">-</button>
+        <button id="boton-cantidad" type="button" class="btn btn-outline-primary"></button>
+        <button data-id="" id="boton-mas" type="button" class="btn btnplus btn-outline-primary">+</button>
+      </div>
+      <h4 id="precio-total" class="precio-total"></h4>
+    </div>
+  </div>
+</template>
+
+<template id="template-productos">
+  <div id='producto'class="card producto">
+    <h3 id="producto-titulo"></h3>
+    <img id="producto-imagen" alt="">
+    <span id="producto-tipo"></span>
+    <p id="precio-producto"></p>
+    <button data-id="" class="btn btn-primary">Boton</button>
+  </div>
+</template>
+
+<template id="template-total">
+  
+</template>
+
 
 
     <!-- Bootstrap Js -->
@@ -78,6 +158,8 @@
     <!-- Stock-->
     <script src="js/stock.js"></script>
     <!--Main-->
-    <script src="js/main.js"></script>
+    <script src="js/js.js"></script>
+    
+
 </body>
 </html>

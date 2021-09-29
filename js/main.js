@@ -1,12 +1,12 @@
 carrito = []
 
-const titulo = $('#title')
-titulo.addClass('container', 'titulo')
+const titulo = document.getElementById('title')
+titulo.classList.add('container', 'titulo')
 
 const contenedor = $('#contenedor-productos')
+//const contenedor = document.querySelector('#contenedor-productos')
 
-const tabla = $('#tabla-contenedor')
-
+const tabla = document.getElementById('tabla-contenedor')
 
 const mostrarCompra = () => {
     
@@ -29,7 +29,6 @@ const agregarCarrito = (prodId) => {
 
     mostrarCompra()
 }
-
 const mostrarProductos = (array) => {
     
     contenedor.html = ""
@@ -50,12 +49,36 @@ const mostrarProductos = (array) => {
         $(".producto").css("width" , "22rem")
     }
 }
+// const mostrarProductos = (array) => {
+    
+//     contenedor.innerHTML = ""
 
-mostrarProductos(stockTotal)
+//     for (const producto of array){
+//         const div = document.createElement('div')
+//         div.className = "card producto"
+//         div.innerHTML = `
+//             <h3>${producto.nombre}</h3>
+//             <img src=${producto.img}>
+//             <p>$${producto.precio}</p>
+//             <a id="agregarProducto-${producto.id}" class="btn btn-primary">Boton</a>
+//         `
+//         // const compraButton = document.getElementById(`agregarProducto${producto.id}`)
+//         // compraButton.addEventListener('click', agregarCarrito(`${producto.id}`))
+//     const botonProducto = document.getElementById(`agregarProducto-${producto.id}`)
+
+//         $("#producto").css("width" , "22rem")
+//     }
+//         botonProducto.addEventListener('click', () =>{
+//             agregarCarrito(producto.id)
+//         })
+// }
+document.addEventListener('DOMContentLoaded', () =>{
+    mostrarProductos(stockTotal)
+})
 
 // FILTRADO
-const filtroTipo = $("#tipo")
-const filtroPrecio = $("#precios")
+const filtroTipo = document.getElementById("tipo")
+const filtroPrecio = document.getElementById("precios")
 
 const filtrado = () => {
     let valorTipo = filtroTipo.value
@@ -84,22 +107,5 @@ filtroTipo.addEventListener('change', ()=>{
 filtroPrecio.addEventListener('change', ()=>{
     filtrado()
 })
-
-// for (const producto of stockTotal) {
-
-//     const div = document.createElement('div')
-
-//     div.className = "card producto"
-//     div.style.width = "18rem"
- 
-//     div.innerHTML = `
-//         <h3>${producto.nombre}</h3>
-//         <img src=${producto.img}>
-//         <p>$${producto.precio}</p>
-//         <a onclick="agregarCarrito(${producto.id})" class="btn btn-primary" id="botonCarrito">Boton</a>
-//     `    
-//     contenedor.appendChild(div)
-// }
-
 
 console.log(carrito)
