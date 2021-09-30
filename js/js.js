@@ -7,10 +7,12 @@ const modalCarrito = document.getElementById('modal-body')
 const fragmentCarrito = document.createDocumentFragment()
 const botonCarrito = document.getElementById('boton-carrito')
 
-
+document.addEventListener('DOMContentLoaded', () =>{
+    mostrarProductos(stockTotal)
+})
 // Función para Mostrar Productos
 const mostrarProductos = array =>{
-
+    productos.innerHTML=""
     array.forEach(elemento =>{
         const cardContenedor = template.getElementById('producto')
         template.getElementById('producto-titulo').textContent = elemento.nombre
@@ -24,10 +26,6 @@ const mostrarProductos = array =>{
     })
     productos.appendChild(fragment)
 }
-mostrarProductos(stockTotal)
-
-// Función de Filtrado
-
 
 
 // Mostrar máximo de 12 productos por página
@@ -35,16 +33,42 @@ const mostrarCantidad = 12
 const cantidadPagina = Math.ceil(stockTotal.length/mostrarCantidad)
 console.log(cantidadPagina)
 
-// Función para mostrar sólo determinada cantidad
+console.log(stockTotal[1])
 
-// const mostrarEstos = stockTotal => {
-//     let estosProductos = []
-//     for(let i = 0; i = mostrarCantidad; i++){
-//         estosProductos.push(stockTotal[i])
-//     }
-// }
-// mostrarEstos(stockTotal)
-// console.log(estosProductos)
+const dividirProductos = () =>{
+    let primerosDoce = []
+    let segundosDoce = []
+    let tercerosDoce = []
+    let cuartosDoce = []
+    let quintosDoce = []
+    for(let i = 0; i < stockTotal.length; i++){
+        if(i < mostrarCantidad){
+            primerosDoce.push(stockTotal[i])
+        }
+        if(mostrarCantidad <= i && i < mostrarCantidad*2){
+            segundosDoce.push(stockTotal[i])
+            console.log()
+        }
+        if(mostrarCantidad*2 <= i && i < mostrarCantidad*3){
+            tercerosDoce.push(stockTotal[i])
+        }
+        if(mostrarCantidad*3 <= i && i < mostrarCantidad*4){
+            cuartosDoce.push(stockTotal[i])
+        }
+        if(mostrarCantidad*4 <= i && i < mostrarCantidad*5){
+            quintosDoce.push(stockTotal[i])
+        }
+    }
+
+    console.log(primerosDoce)
+    console.log(segundosDoce)
+    console.log(tercerosDoce)
+    console.log(cuartosDoce)
+    console.log(quintosDoce)
+}
+dividirProductos()
+
+
 
 let carrito = {}
 
@@ -84,7 +108,6 @@ const mostrarCarrito = () =>{
     armarCarrito(arrayCarrito)
     mostrarTotal()
 }
-
 const armarCarrito = coleccion =>{
     modalCarrito.innerHTML = ""
     coleccion.forEach(prod =>{
@@ -100,7 +123,6 @@ const armarCarrito = coleccion =>{
     })
     modalCarrito.appendChild(fragmentCarrito)
 }
-
 // Función para mostrar el Total de productos y cantidad
 const mostrarTotal = () =>{
     const cantidadTotal = Object.values(carrito).reduce((acc, {cantidad})=> acc + cantidad, 0)
@@ -109,7 +131,6 @@ const mostrarTotal = () =>{
     document.getElementById('cant-productos').textContent = cantidadTotal
     document.getElementById('cant-total').textContent = precioTotal
 }
-
 
 // Boton para Vaciar el Carrito
 
@@ -148,4 +169,61 @@ const botonAccion = e =>{
     }
     mostrarCarrito()
     e.stopPropagation()
+}
+
+// Filtrado
+const tipoFiltrado = document.getElementById('tipo-filtrado')
+
+tipoFiltrado.addEventListener('change',() => modificarFiltro())
+
+const modificarFiltro = () =>{
+    let valorFiltro = tipoFiltrado.value
+    let arrayFiltrado = []
+    if(valorFiltro == "Todos"){
+        arrayFiltrado = stockTotal
+    } else{
+        arrayFiltrado = stockTotal.filter( el => el.tipo == valorFiltro)
+    }
+    mostrarProductos(arrayFiltrado)
+}
+
+const ordenarProductos = document.getElementById('ordenar')
+
+ordenarProductos.addEventListener('change', () => ordenProductos())
+
+const ordenProductos = () =>{
+    // modificarFiltro()
+    let valorOrden = ordenarProductos.value
+    if(valorOrden == ""){
+        return
+    }
+    if(valorOrden == "A-Z"){
+        stockTotal.sort((a, b) =>{
+            if (b.nombre > a.nombre){
+                return -1
+            }
+        })
+    }
+    if(valorOrden == "Z-A"){
+        stockTotal.sort((a, b) =>{
+            if (a.nombre > b.nombre){
+                return -1
+            }
+        })
+    }
+    if(valorOrden == "$+"){
+        stockTotal.sort((a, b) =>{
+            if (a.precio > b.precio){
+                return -1
+            }
+        })
+    }
+    if(valorOrden == "$-"){
+        stockTotal.sort((a, b) =>{
+            if (b.precio > a.precio){
+                return -1
+            }
+        })
+    }
+    modificarFiltro()
 }

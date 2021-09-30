@@ -62,22 +62,33 @@
 </div>
     <!-- FILTROS -->
 <main class="container">
-  <div class="col-9">
-    <h2 id="filtrado">Filtrado</h2>
-    <select id="tipo">
-      <option value="Todos">Todos</option>
-      <option value="Base">Bases</option>
-      <option value="Deco">Deco</option>
-      <option value="Velas">Velas</option>
-      <option value="Spa">Spa</option>
-      <option value="Otros">Otros</option>
-    </select>
+  <div class="row">
+    <div class="col-6">
+      <h2 id="filtrado">Filtrado</h2>
+      <select id="tipo-filtrado">
+        <option value="Todos">Todos</option>
+        <option value="Base">Bases</option>
+        <option value="Deco">Deco</option>
+        <option value="Velas">Velas</option>
+        <option value="Spa">Spa</option>
+        <option value="Otros">Otros</option>
+      </select>
+    </div>
+    <div class="col-6">
+      <h2 id="ordenar-Titulo">Ordenar por</h2>
+      <select name="" id="ordenar">
+        <option value=""selected disabled>...</option>
+        <option value="A-Z">Nombre A-Z</option>
+        <option value="Z-A">Nombre Z-A</option>
+        <option value="$+">Precio Mayor</option>
+        <option value="$-">Precio Menor</option>
+      </select>
+    </div>
+    
 
-    <select id="precios">
-      <option value="0">Todos</option>
-      <option value="1">0 - 1000</option>
-      <option value="2">+1000</option>
-    </select> 
+    <!--Ordenar Por-->
+
+  
   </div>
   <div id="boton-carrito" class="col-3">
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
