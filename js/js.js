@@ -8,11 +8,14 @@ const fragmentCarrito = document.createDocumentFragment()
 const botonCarrito = document.getElementById('boton-carrito')
 
 document.addEventListener('DOMContentLoaded', () =>{
-    mostrarProductos(stockTotal)
+    dividirProductos(stockTotal)
+    mostrarProductos(primerosDoce)
+    crearBotones(stockTotal)
+    
 })
 // Función para Mostrar Productos
 const mostrarProductos = array =>{
-    productos.innerHTML=""
+    productos.innerHTML = ''
     array.forEach(elemento =>{
         const cardContenedor = template.getElementById('producto')
         template.getElementById('producto-titulo').textContent = elemento.nombre
@@ -27,54 +30,99 @@ const mostrarProductos = array =>{
     productos.appendChild(fragment)
 }
 
-
 // Mostrar máximo de 12 productos por página
 const mostrarCantidad = 12
-const cantidadPagina = Math.ceil(stockTotal.length/mostrarCantidad)
-console.log(cantidadPagina)
 
-console.log(stockTotal[1])
+let primerosDoce = []
+let segundosDoce = []
+let tercerosDoce = []
+let cuartosDoce = []
+let quintosDoce = []
 
-const dividirProductos = () =>{
-    let primerosDoce = []
-    let segundosDoce = []
-    let tercerosDoce = []
-    let cuartosDoce = []
-    let quintosDoce = []
-    for(let i = 0; i < stockTotal.length; i++){
-        if(i < mostrarCantidad){
-            primerosDoce.push(stockTotal[i])
-        }
-        if(mostrarCantidad <= i && i < mostrarCantidad*2){
-            segundosDoce.push(stockTotal[i])
-            console.log()
-        }
-        if(mostrarCantidad*2 <= i && i < mostrarCantidad*3){
-            tercerosDoce.push(stockTotal[i])
-        }
-        if(mostrarCantidad*3 <= i && i < mostrarCantidad*4){
-            cuartosDoce.push(stockTotal[i])
-        }
-        if(mostrarCantidad*4 <= i && i < mostrarCantidad*5){
-            quintosDoce.push(stockTotal[i])
-        }
-    }
+const dividirProductos = array =>{
+    console.log(primerosDoce)
+    let hola = []
+    console.log(hola)
+    primerosDoce.splice(0, primerosDoce.length)
+    segundosDoce = []
+    tercerosDoce = []
+    cuartosDoce = []
+    quintosDoce = []
 
     console.log(primerosDoce)
-    console.log(segundosDoce)
-    console.log(tercerosDoce)
-    console.log(cuartosDoce)
-    console.log(quintosDoce)
+    for(let i = 0; i < array.length; i++){
+        if(i < mostrarCantidad){
+            if(primerosDoce.includes(array[i]) == false){
+                primerosDoce.push(array[i])
+            } else continue
+            
+        }
+        if(mostrarCantidad <= i && i < mostrarCantidad*2){
+            if(segundosDoce.includes(array[i]) == false){
+                segundosDoce.push(array[i])
+            } else continue
+        }
+        if(mostrarCantidad*2 <= i && i < mostrarCantidad*3){
+            if(tercerosDoce.includes(array[i]) == false){
+                tercerosDoce.push(array[i])
+            } else continue
+        }
+        if(mostrarCantidad*3 <= i && i < mostrarCantidad*4){
+            if(cuartosDoce.includes(array[i]) == false){
+                cuartosDoce.push(array[i])
+            } else continue
+        }
+        if(mostrarCantidad*4 <= i && i < mostrarCantidad*5){
+            if(quintosDoce.includes(array[i]) == false){
+                quintosDoce.push(array[i])
+            } else continue
+        }
+    }
+    console.log(primerosDoce)
 }
-dividirProductos()
-
-
 
 let carrito = {}
 
-productos.addEventListener('click', e =>{
-    agregarCarrito(e)
-})
+// Creo los botones para navegar entre páginas
+const templateButton = document.getElementById('templateButton').content
+const fragmentButton = document.createDocumentFragment()
+const contenedorButton = document.getElementById('contenedor-button')
+
+const crearBotones = array =>{
+    let cantidadPagina = Math.ceil(array.length/mostrarCantidad)
+    contenedorButton.innerHTML = ""
+    for(let i = 1; i <= cantidadPagina; i++){
+        templateButton.getElementById('botonPagina').dataset.id = `boton${i}`
+        templateButton.getElementById('botonPagina').textContent = `${i}`
+
+        const cloneButton = templateButton.cloneNode(true)
+        fragmentButton.appendChild(cloneButton)
+    }
+    contenedorButton.appendChild(fragmentButton)
+}
+
+contenedorButton.addEventListener('click', e => mostrarEstos(e))
+const mostrarEstos = e =>{
+    let numeroBoton = (e.target.dataset.id).slice(5)
+    if(numeroBoton == 1){
+        mostrarProductos(primerosDoce)
+    }
+    if(numeroBoton == 2){
+        mostrarProductos(segundosDoce)
+    }
+    if(numeroBoton == 3){
+        mostrarProductos(tercerosDoce)
+    }
+    if(numeroBoton == 4){
+        mostrarProductos(cuartosDoce)
+    }
+    if(numeroBoton == 5){
+        mostrarProductos(quintosDoce)
+    }
+    e.stopPropagation()
+}
+
+productos.addEventListener('click', e => agregarCarrito(e))
 
 const agregarCarrito = e =>{
     if(e.target.classList.contains('btn')){
@@ -99,9 +147,7 @@ const setCarrito = obj =>{
 }
 
 // Mostrar Carrito
-botonCarrito.addEventListener('click', () =>{
-    mostrarCarrito()
-})
+botonCarrito.addEventListener('click', () => mostrarCarrito())
 
 const mostrarCarrito = () =>{
     let arrayCarrito = Object.values(carrito)
@@ -136,10 +182,7 @@ const mostrarTotal = () =>{
 
 const botonVaciar = document.getElementById('vaciar-carrito')
 
-botonVaciar.addEventListener('click', () =>{
-    vaciarCarrito()
-    
-})
+botonVaciar.addEventListener('click', () => vaciarCarrito())
 const vaciarCarrito = () =>{
     carrito = {}
     let arrayCarrito = Object.values(carrito)
@@ -149,10 +192,7 @@ const vaciarCarrito = () =>{
 
 // Funcionalidad a los Botones de Sumar y Restar
 
-modalCarrito.addEventListener('click', e =>{
-    botonAccion(e)
-})
-
+modalCarrito.addEventListener('click', e => botonAccion(e))
 const botonAccion = e =>{
     const producto = carrito[e.target.dataset.id]
     if (e.target.classList.contains('btnplus')){
@@ -184,7 +224,10 @@ const modificarFiltro = () =>{
     } else{
         arrayFiltrado = stockTotal.filter( el => el.tipo == valorFiltro)
     }
-    mostrarProductos(arrayFiltrado)
+    dividirProductos(arrayFiltrado)
+    mostrarProductos(primerosDoce)
+    crearBotones(arrayFiltrado)
+
 }
 
 const ordenarProductos = document.getElementById('ordenar')
@@ -192,7 +235,6 @@ const ordenarProductos = document.getElementById('ordenar')
 ordenarProductos.addEventListener('change', () => ordenProductos())
 
 const ordenProductos = () =>{
-    // modificarFiltro()
     let valorOrden = ordenarProductos.value
     if(valorOrden == ""){
         return
@@ -227,3 +269,4 @@ const ordenProductos = () =>{
     }
     modificarFiltro()
 }
+

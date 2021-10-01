@@ -74,6 +74,7 @@
         <option value="Otros">Otros</option>
       </select>
     </div>
+    <!--Ordenar Por-->
     <div class="col-6">
       <h2 id="ordenar-Titulo">Ordenar por</h2>
       <select name="" id="ordenar">
@@ -83,23 +84,27 @@
         <option value="$+">Precio Mayor</option>
         <option value="$-">Precio Menor</option>
       </select>
-    </div>
-    
-
-    <!--Ordenar Por-->
-
-  
+    </div> 
   </div>
   <div id="boton-carrito" class="col-3">
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-      Launch demo modal
+      Ver Carrito
     </button>
   </div>
 
   <section id="contenedor-productos" class="col-12">
     <!-- Mediante Js Agrego los Divs-->
   </section>
+  <div id="division-paginas" class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+    <div id="contenedor-button" class="btn-group me-2" role="group" aria-label="First group">
+    <!--Genero mediante Js los buttons-->
+    </div> 
+  </div>
 </main>
+
+<template id="templateButton">
+  <button data-id="" id="botonPagina" type="button" class="btn btn-outline-secondary"></button>
+</template>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -157,12 +162,6 @@
     <button data-id="" class="btn btn-primary">Boton</button>
   </div>
 </template>
-
-<template id="template-total">
-  
-</template>
-
-
 
     <!-- Bootstrap Js -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
