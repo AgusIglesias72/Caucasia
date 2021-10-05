@@ -1,7 +1,41 @@
 body{
     margin: 0;
     padding: 0;
+    background-image: url(../img/Principales/Fondo.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment:fixed;
 }
+.header{
+    margin: auto;
+    text-align: center;
+    .logo-contenedor{
+        .logo{
+            max-height: 200px;
+            border-radius: 50%;
+        }
+    }
+    .contenedor-lista{
+        list-style-type: none;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        .el-lista{
+            display: block;
+            margin: 1em 2em;
+            a{
+                padding: 1em 2em;
+                display: block;
+                text-decoration: none;
+            }
+            a:hover{
+                border-left: 2px black solid;
+                border-right: 2px black solid;
+            }
+        }
+    }
+}
+
 
 .mynav{
     margin: 10px 300px;

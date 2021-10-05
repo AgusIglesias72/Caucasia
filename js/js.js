@@ -270,3 +270,41 @@ const ordenProductos = () =>{
     modificarFiltro()
 }
 
+
+const botonComprar = document.getElementById('boton-comprar')
+botonComprar.addEventListener('click', () => comprarProductos())
+
+const comprarProductos = async () =>{
+    let arrayCarrito = Object.values(carrito)
+
+    const productosMP = arrayCarrito.map((prod) => {
+        return {
+            title: prod.nombre,
+            description: "",
+            picture_url: prod.img,
+            category_id: prod.id,
+            quantity: prod.cantidad,
+            currency_id: "ARS",
+            unit_price: prod.precioUnit
+        }
+    })
+
+    console.log(arrayCarrito)
+    console.log(productosMP)
+    const resp = await fetch('https://api.mercadopago.com/checkout/preferences', {
+            method: 'POST',
+            headers: {
+                Authorization: 'Bearer TEST-2507580927364970-100522-6cdb18d87b251bc56bd2300b19272a99-405011859',
+            },
+            body: JSON.stringify({
+                items: productosMP,
+                back_urls: {
+                    success:'https://agusiglesias72.github.io/Caucasia/',
+                    failure: 'https://agusiglesias72.github.io/Caucasia/'
+                }
+            })
+    })
+    const data = await resp.json()
+
+    window.location.replace(data.init_point)
+}

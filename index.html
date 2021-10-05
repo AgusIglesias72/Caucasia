@@ -4,17 +4,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./img/Productos/logoCaucasia.jpeg" type="image/x-icon">
     <!--Bootstrap Link-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <!-- Styles Css -->
     <link rel="stylesheet" href="css/styles.css">
     
-    <title>Document</title>
+    <title>Caucasia</title>
 </head>
 <body>
     <!-- Header de Bootstrap-->
-<header class="container">
-  <ul class="nav nav-tabs mynav">
+<header class="container header">
+  <picture class="logo-contenedor">
+    <img class="logo" src="./img/Productos/logoCaucasia.jpeg" alt="">
+  </picture>
+  <ul class="contenedor-lista">
+    <li class="el-lista"><a href="">Nosotros</a></li>
+    <li class="el-lista"><a href="">Productos</a></li>
+    <li class="el-lista"><a href="">Contacto</a></li>
+  </ul>
+  <!-- <ul class="nav nav-tabs mynav">
     <li class="nav-item">
       <a class="nav-link active" aria-current="page" href="#">Active</a>
     </li>
@@ -27,7 +36,7 @@
     <li class="nav-item">
       <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
     </li>
-  </ul>
+  </ul> -->
 </header>
 
 
@@ -129,7 +138,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary">Comprar</button>
+        <button id="boton-comprar" type="button" class="btn btn-primary">Comprar</button>
       </div>
     </div>
   </div>

@@ -2,7 +2,7 @@ let stockTotal = []
 
 // STOCK BASES
 stockTotal.push(
-    {id: 1, tipo: "Base", nombre: "Base Saona", precio: 250, descripción: "Breve Descripción del Producto para mostrar al hacer click", stock: 10, img: "img/ImagenGris.png"},
+    {id: 1, tipo: "Base", nombre: "Base Saona", precio: 250, descripción: "Breve Descripción del Producto para mostrar al hacer click", stock: 10, img: "./img/Productos/velaChipre.jpeg"},
     {id: 2, tipo: "Base", nombre: "Base Ibiza", precio: 280, descripción: "Breve Descripción del Producto para mostrar al hacer click", stock: 10, img: "img/ImagenGris.png"},
     {id: 3, tipo: "Base", nombre: "Base Tulum", precio: 300, descripción: "Breve Descripción del Producto para mostrar al hacer click", stock: 10, img: "img/ImagenGris.png"},
     {id: 4, tipo: "Base", nombre: "Base Niza", precio: 300, descripción: "Breve Descripción del Producto para mostrar al hacer click", stock: 10, img: "img/ImagenGris.png"},
@@ -22,27 +22,27 @@ stockTotal.push(
 )
 // STOCK VELAS
 stockTotal.push(
-    {id: 15, tipo: "Velas", nombre: "Vela Málaga Shore", precio: 450, descripción: "Breve Descripción del Producto para mostrar al hacer click", stock: 10, img: "img/ImagenGris.png"},
+    {id: 15, tipo: "Velas", nombre: "Vela Málaga Shore", precio: 450, descripción: "Breve Descripción del Producto para mostrar al hacer click", stock: 10, img: "./img/Productos/velaMalaga.jpeg"},
     {id: 16, tipo: "Velas", nombre: "Vela Guinea", precio: 450, descripción: "Breve Descripción del Producto para mostrar al hacer click", stock: 10, img: "img/ImagenGris.png"},
     {id: 17, tipo: "Velas", nombre: "Vela Malasia", precio: 500, descripción: "Breve Descripción del Producto para mostrar al hacer click", stock: 10, img: "img/ImagenGris.png"},
-    {id: 18, tipo: "Velas", nombre: "Vela Milán", precio: 500, descripción: "Breve Descripción del Producto para mostrar al hacer click", stock: 10, img: "img/ImagenGris.png"},
-    {id: 19, tipo: "Velas", nombre: "Vela Nepal", precio: 500, descripción: "Breve Descripción del Producto para mostrar al hacer click", stock: 10, img: "img/ImagenGris.png"},
-    {id: 20, tipo: "Velas", nombre: "Vela Caucasia", precio: 550, descripción: "Breve Descripción del Producto para mostrar al hacer click", stock: 10, img: "img/ImagenGris.png"},
-    {id: 21, tipo: "Velas", nombre: "Vela Mónaco", precio: 600, descripción: "Breve Descripción del Producto para mostrar al hacer click", stock: 10, img: "img/ImagenGris.png"},
-    {id: 22, tipo: "Velas", nombre: "Vela Montenegro", precio: 600, descripción: "Breve Descripción del Producto para mostrar al hacer click", stock: 10, img: "img/ImagenGris.png"},
-    {id: 23, tipo: "Velas", nombre: "Vela Roma", precio: 650, descripción: "Breve Descripción del Producto para mostrar al hacer click", stock: 10, img: "img/ImagenGris.png"},
-    {id: 24, tipo: "Velas", nombre: "Vela Cartagena", precio: 750, descripción: "Breve Descripción del Producto para mostrar al hacer click", stock: 10, img: "img/ImagenGris.png"},
-    {id: 25, tipo: "Velas", nombre: "Vela Moscú", precio: 800, descripción: "Breve Descripción del Producto para mostrar al hacer click", stock: 10, img: "img/ImagenGris.png"},
-    {id: 26, tipo: "Velas", nombre: "Vela Belice XL", precio: 850, descripción: "Breve Descripción del Producto para mostrar al hacer click", stock: 10, img: "img/ImagenGris.png"},
+    {id: 18, tipo: "Velas", nombre: "Vela Milán", precio: 500, descripción: "Breve Descripción del Producto para mostrar al hacer click", stock: 10, img: "./img/Productos/velaMilan.jpeg"},
+    {id: 19, tipo: "Velas", nombre: "Vela Nepal", precio: 500, descripción: "Breve Descripción del Producto para mostrar al hacer click", stock: 10, img: "./img/Productos/velaNepal.jpeg"},
+    {id: 20, tipo: "Velas", nombre: "Vela Caucasia", precio: 550, descripción: "Breve Descripción del Producto para mostrar al hacer click", stock: 10, img: "./img/Productos/velaCaucasia.jpeg"},
+    {id: 21, tipo: "Velas", nombre: "Vela Mónaco", precio: 600, descripción: "Breve Descripción del Producto para mostrar al hacer click", stock: 10, img: "./img/Productos/velaMonaco.jpeg"},
+    {id: 22, tipo: "Velas", nombre: "Vela Montenegro", precio: 600, descripción: "Breve Descripción del Producto para mostrar al hacer click", stock: 10, img: "./img/Productos/velaMontenegro.jpeg"},
+    {id: 23, tipo: "Velas", nombre: "Vela Roma", precio: 650, descripción: "Breve Descripción del Producto para mostrar al hacer click", stock: 10, img: "./img/Productos/velaRoma.jpeg"},
+    {id: 24, tipo: "Velas", nombre: "Vela Cartagena", precio: 750, descripción: "Breve Descripción del Producto para mostrar al hacer click", stock: 10, img: "./img/Productos/velaCartagena.jpeg"},
+    {id: 25, tipo: "Velas", nombre: "Vela Moscú", precio: 800, descripción: "Breve Descripción del Producto para mostrar al hacer click", stock: 10, img: "./img/Productos/velaMoscu.jpeg"},
+    {id: 26, tipo: "Velas", nombre: "Vela Belice XL", precio: 850, descripción: "Breve Descripción del Producto para mostrar al hacer click", stock: 10, img: "./img/Productos/velaBeliceXL.jpeg"},
     {id: 27, tipo: "Velas", nombre: "Vela Viena", precio: 900, descripción: "Breve Descripción del Producto para mostrar al hacer click", stock: 10, img: "img/ImagenGris.png"},
-    {id: 28, tipo: "Velas", nombre: "Vela Praga", precio: 1000, descripción: "Breve Descripción del Producto para mostrar al hacer click", stock: 10, img: "img/ImagenGris.png"},
-    {id: 29, tipo: "Velas", nombre: "Vela Shanghai", precio: 1400, descripción: "Breve Descripción del Producto para mostrar al hacer click", stock: 10, img: "img/ImagenGris.png"},
-    {id: 30, tipo: "Velas", nombre: "Vela Hydra", precio: 1700, descripción: "Breve Descripción del Producto para mostrar al hacer click", stock: 10, img: "img/ImagenGris.png"},
-    {id: 31, tipo: "Velas", nombre: "Vela Afrodita", precio: 650, descripción: "Breve Descripción del Producto para mostrar al hacer click", stock: 10, img: "img/ImagenGris.png"},
-    {id: 32, tipo: "Velas", nombre: "Vela Afrodita Mini", precio: 200, descripción: "Breve Descripción del Producto para mostrar al hacer click", stock: 10, img: "img/ImagenGris.png"},
+    {id: 28, tipo: "Velas", nombre: "Vela Praga", precio: 1000, descripción: "Breve Descripción del Producto para mostrar al hacer click", stock: 10, img: "./img/Productos/velaPraga.jpeg"},
+    {id: 29, tipo: "Velas", nombre: "Vela Shanghai", precio: 1400, descripción: "Breve Descripción del Producto para mostrar al hacer click", stock: 10, img: "./img/Productos/velaShangai.jpeg"},
+    {id: 30, tipo: "Velas", nombre: "Vela Hydra", precio: 1700, descripción: "Breve Descripción del Producto para mostrar al hacer click", stock: 10, img: "./img/Productos/velaHydra.jpeg"},
+    {id: 31, tipo: "Velas", nombre: "Vela Afrodita", precio: 650, descripción: "Breve Descripción del Producto para mostrar al hacer click", stock: 10, img: "./img/Productos/velaAfrodita.jpeg"},
+    {id: 32, tipo: "Velas", nombre: "Vela Afrodita Mini", precio: 200, descripción: "Breve Descripción del Producto para mostrar al hacer click", stock: 10, img: "./img/Productos/velaAfroditaMini.jpeg"},
     {id: 33, tipo: "Velas", nombre: "Vela Afrodita Mini x2", precio: 350, descripción: "Breve Descripción del Producto para mostrar al hacer click", stock: 10, img: "img/ImagenGris.png"},
     {id: 34, tipo: "Velas", nombre: "Combo Afrodita + Mini", precio: 750, descripción: "Breve Descripción del Producto para mostrar al hacer click", stock: 10, img: "img/ImagenGris.png"},
-    {id: 35, tipo: "Velas", nombre: "Colección Zodiac", precio: 500, descripción: "Breve Descripción del Producto para mostrar al hacer click", stock: 10, img: "img/ImagenGris.png"},
+    {id: 35, tipo: "Velas", nombre: "Colección Zodiac", precio: 500, descripción: "Breve Descripción del Producto para mostrar al hacer click", stock: 10, img: "./img/Productos/velaZodiacGeminis.jpeg"},
 )
 // STOCK SPA
 stockTotal.push(
