@@ -287,7 +287,6 @@ botonComprar.addEventListener('click', () => {
     } else{
         comprarProductos()
     }
-
 })
 
 const comprarProductos = async () =>{
