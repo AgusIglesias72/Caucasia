@@ -7,12 +7,20 @@ const modalCarrito = document.getElementById('modal-body')
 const fragmentCarrito = document.createDocumentFragment()
 const botonCarrito = document.getElementById('boton-carrito')
 
+let carrito = {}
+
 document.addEventListener('DOMContentLoaded', () =>{
     dividirProductos(stockTotal)
     mostrarProductos(primerosDoce)
     crearBotones(stockTotal)
-    
+    cargarCarrito()
 })
+
+const cargarCarrito = () =>{
+    if (localStorage.getItem('carrito')){
+        carrito = JSON.parse(localStorage.getItem('carrito'))
+    }
+}
 // Función para Mostrar Productos
 const mostrarProductos = array =>{
     productos.innerHTML = ''
@@ -40,16 +48,12 @@ let cuartosDoce = []
 let quintosDoce = []
 
 const dividirProductos = array =>{
-    console.log(primerosDoce)
-    let hola = []
-    console.log(hola)
-    primerosDoce.splice(0, primerosDoce.length)
+    primerosDoce = []
     segundosDoce = []
     tercerosDoce = []
     cuartosDoce = []
     quintosDoce = []
 
-    console.log(primerosDoce)
     for(let i = 0; i < array.length; i++){
         if(i < mostrarCantidad){
             if(primerosDoce.includes(array[i]) == false){
@@ -78,10 +82,8 @@ const dividirProductos = array =>{
             } else continue
         }
     }
-    console.log(primerosDoce)
 }
 
-let carrito = {}
 
 // Creo los botones para navegar entre páginas
 const templateButton = document.getElementById('templateButton').content
@@ -123,7 +125,6 @@ const mostrarEstos = e =>{
 }
 
 productos.addEventListener('click', e => agregarCarrito(e))
-
 const agregarCarrito = e =>{
     if(e.target.classList.contains('btn')){
         setCarrito(e.target.parentElement)
@@ -144,12 +145,17 @@ const setCarrito = obj =>{
         producto.cantidad = carrito[producto.id].cantidad + 1
     }
     carrito[producto.id] = {...producto}
+
+    console.log(carrito)
+
+    localStorage.setItem('carrito', JSON.stringify(carrito))
 }
 
 // Mostrar Carrito
 botonCarrito.addEventListener('click', () => mostrarCarrito())
 
 const mostrarCarrito = () =>{
+    cargarCarrito()
     let arrayCarrito = Object.values(carrito)
     armarCarrito(arrayCarrito)
     mostrarTotal()
@@ -185,6 +191,7 @@ const botonVaciar = document.getElementById('vaciar-carrito')
 botonVaciar.addEventListener('click', () => vaciarCarrito())
 const vaciarCarrito = () =>{
     carrito = {}
+    localStorage.setItem('carrito', JSON.stringify(carrito))
     let arrayCarrito = Object.values(carrito)
     armarCarrito(arrayCarrito)
     mostrarTotal()
@@ -207,6 +214,7 @@ const botonAccion = e =>{
             carrito[e.target.dataset.id] = {...producto}
         }
     }
+    localStorage.setItem('carrito', JSON.stringify(carrito))
     mostrarCarrito()
     e.stopPropagation()
 }
@@ -270,9 +278,17 @@ const ordenProductos = () =>{
     modificarFiltro()
 }
 
-
+// API Mercado Pago
 const botonComprar = document.getElementById('boton-comprar')
-botonComprar.addEventListener('click', () => comprarProductos())
+botonComprar.addEventListener('click', () => {
+    let arrayCarrito = Object.values(carrito)
+    if(Object.keys(carrito).length == 0){
+        return
+    } else{
+        comprarProductos()
+    }
+
+})
 
 const comprarProductos = async () =>{
     let arrayCarrito = Object.values(carrito)
@@ -289,8 +305,6 @@ const comprarProductos = async () =>{
         }
     })
 
-    console.log(arrayCarrito)
-    console.log(productosMP)
     const resp = await fetch('https://api.mercadopago.com/checkout/preferences', {
             method: 'POST',
             headers: {
